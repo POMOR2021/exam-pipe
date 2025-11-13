@@ -91,9 +91,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: >
-      github.ref == 'refs/heads/main' &&
-      secrets.KUBE_CONFIG != ''
+    if: ${{ github.ref == 'refs/heads/main' && secrets.KUBE_CONFIG != '' }}
     needs: [ docker-build-push, validate-manifests ]
     steps:
       - name: Checkout
